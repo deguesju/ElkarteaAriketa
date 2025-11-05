@@ -52,7 +52,7 @@ namespace Elkartea {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Elkartea;V1.0.0.0;component/userwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Elkartea;component/userwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\UserWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

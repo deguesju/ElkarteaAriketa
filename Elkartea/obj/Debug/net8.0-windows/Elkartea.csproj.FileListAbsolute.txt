@@ -34,3 +34,5 @@ C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\De
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\ref\Elkartea.dll
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Views\UserPanel.baml
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Views\UserPanel.g.cs
+C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Views\AdminPanel.baml
+C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Views\AdminPanel.g.cs
