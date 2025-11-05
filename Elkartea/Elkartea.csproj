@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <!-- Exclude legacy Window files that duplicate UserControl-based panels -->
+  <ItemGroup>
+    <Compile Remove="AdminWindow.xaml.cs" />
+    <Compile Remove="UserWindow.xaml.cs" />
+    <Page Remove="AdminWindow.xaml" />
+    <Page Remove="UserWindow.xaml" />
+  </ItemGroup>
+
 </Project>

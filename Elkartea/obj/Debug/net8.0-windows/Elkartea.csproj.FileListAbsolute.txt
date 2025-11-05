@@ -1,10 +1,8 @@
-C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\AdminWindow.baml
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\LoginWindow.baml
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Views\OrdersWindow.baml
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Views\ReservationsWindow.baml
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Views\StockWindow.baml
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Views\UsersWindow.baml
-C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\AdminWindow.g.cs
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\LoginWindow.g.cs
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\MainWindow.g.cs
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Views\OrdersWindow.g.cs
@@ -14,8 +12,6 @@ C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\De
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\App.g.cs
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Elkartea_MarkupCompile.cache
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\MainWindow.baml
-C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\UserWindow.baml
-C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\UserWindow.g.cs
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Elkartea.g.resources
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Elkartea.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Elkartea.AssemblyInfoInputs.cache

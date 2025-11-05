@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\App.xaml
-102032180834
+8-1063680587
 
-18-633953072
+161587856750
 198-2136442823
-AdminWindow.xaml;LoginWindow.xaml;MainWindow.xaml;UserWindow.xaml;Views\AdminPanel.xaml;Views\OrdersWindow.xaml;Views\ReservationsWindow.xaml;Views\StockWindow.xaml;Views\UserPanel.xaml;Views\UsersWindow.xaml;
+LoginWindow.xaml;MainWindow.xaml;Views\AdminPanel.xaml;Views\OrdersWindow.xaml;Views\ReservationsWindow.xaml;Views\StockWindow.xaml;Views\UserPanel.xaml;Views\UsersWindow.xaml;
 
 False
 

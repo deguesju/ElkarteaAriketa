@@ -1,45 +1,8 @@
-﻿using System.Windows;
-using TPV_Gastronomico.Views;
+﻿// LEGACY: AdminWindow.xaml.cs
+// Replaced by Views/AdminPanel. File excluded from project but kept on disk for reference.
 
 namespace Elkartea
 {
-    public partial class AdminWindow : Window
-    {
-        public AdminWindow()
-        {
-            InitializeComponent();
-        }
-
-        private void btnStock_Click(object sender, RoutedEventArgs e)
-        {
-            MainContent.Children.Clear();
-            MainContent.Children.Add(new StockWindow());
-        }
-
-        private void btnUsers_Click(object sender, RoutedEventArgs e)
-        {
-            MainContent.Children.Clear();
-            MainContent.Children.Add(new UsersWindow());
-        }
-
-        private void btnReservations_Click(object sender, RoutedEventArgs e)
-        {
-            MainContent.Children.Clear();
-            MainContent.Children.Add(new ReservationsWindow());
-        }
-
-        private void btnOrders_Click(object sender, RoutedEventArgs e)
-        {
-            MainContent.Children.Clear();
-            MainContent.Children.Add(new OrdersWindow());
-        }
-
-        private void btnLogout_Click(object sender, RoutedEventArgs e)
-        {
-            // Volver al login dentro de MainWindow: podemos abrir MainWindow de nuevo o cerrar esta ventana
-            var main = new MainWindow();
-            main.Show();
-            this.Close();
-        }
-    }
+    // No runtime code. Use Views.AdminPanel user control instead.
+    internal static class AdminWindow_Legacy { }
 }

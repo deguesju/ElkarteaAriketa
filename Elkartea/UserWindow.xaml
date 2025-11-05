@@ -1,16 +1,14 @@
-<Window x:Class="Elkartea.UserWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Panel de Usuario"
-        Height="400" Width="600"
-        WindowStartupLocation="CenterScreen"
-        Background="#FFF2F2F2">
+<!-- LEGACY FILE: UserWindow.xaml
+     Replaced by Views/UserPanel (UserControl). This file has been deprecated and excluded from the project.
+     You can delete it manually if you want to remove it from disk.
+-->
+<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             d:DesignHeight="400" d:DesignWidth="600">
     <Grid>
-        <TextBlock Text="Bienvenido al panel de usuario"
-                   FontSize="24"
-                   FontWeight="SemiBold"
-                   Foreground="#333"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+        <TextBlock Text="LEGACY: UserWindow (deprecated). Use Views/UserPanel instead." VerticalAlignment="Center" HorizontalAlignment="Center" />
     </Grid>
-</Window>
+</UserControl>
