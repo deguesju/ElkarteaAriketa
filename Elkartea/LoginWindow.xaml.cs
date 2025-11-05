@@ -1,11 +1,13 @@
-﻿using Elkartea;
-using System.Data.SQLite;
+﻿using System;
 using System.Windows;
+using System.Windows.Controls;
 
-namespace TPV_Gastronomico
+namespace TPV_Gastronomico.Views
 {
-    public partial class LoginWindow : Window
+    public partial class LoginWindow : UserControl
     {
+        public event EventHandler<string> LoginCorrecto; // "admin" o "user"
+
         public LoginWindow()
         {
             InitializeComponent();
@@ -13,31 +15,21 @@ namespace TPV_Gastronomico
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            string username = txtUsername.Text.Trim();
-            string password = txtPassword.Password.Trim();
+            string usuario = txtUsuario.Text;
+            string password = txtPassword.Password;
 
-            using (var conn = new SQLiteConnection("Data Source=tpv.db"))
+            // Por ahora, sin base de datos — lo simulamos
+            if (usuario == "admin" && password == "1234")
             {
-                conn.Open();
-                var cmd = new SQLiteCommand("SELECT role FROM users WHERE username=@u AND password=@p", conn);
-                cmd.Parameters.AddWithValue("@u", username);
-                cmd.Parameters.AddWithValue("@p", password); // Para demo; luego usaremos hash
-                var role = cmd.ExecuteScalar() as string;
-
-                if (role == "admin")
-                {
-                    new AdminWindow().Show();
-                    this.Close();
-                }
-                else if (role == "user")
-                {
-                    new UserWindow().Show();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Usuario o contraseña incorrectos");
-                }
+                LoginCorrecto?.Invoke(this, "admin");
+            }
+            else if (usuario == "user" && password == "1234")
+            {
+                LoginCorrecto?.Invoke(this, "user");
+            }
+            else
+            {
+                MessageBox.Show("Usuario o contraseña incorrectos.");
             }
         }
     }

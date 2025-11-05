@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows;
 
 namespace Elkartea
 {
-    internal class UserWindow
+    public partial class UserWindow : Window
     {
+        public UserWindow()
+        {
+            InitializeComponent();
+        }
     }
 }

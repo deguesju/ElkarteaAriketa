@@ -1,9 +1,7 @@
-﻿<Application x:Class="Elkartea.App"
+﻿<Application x:Class="TPV_Gastronomico.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Elkartea"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
     </Application.Resources>
 </Application>
