@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <!-- Título -->
-        <TextBlock Text="Gestión de Reservas"
+        <TextBlock Text="Erreserben kudeaketa"
                    FontSize="22"
                    FontWeight="Bold"
                    Margin="0 0 0 10"/>
@@ -29,18 +29,18 @@
                   Margin="0 10 0 10">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60"/>
-                <DataGridTextColumn Header="Mesa" Binding="{Binding Mesa}" Width="100"/>
-                <DataGridTextColumn Header="Fecha" Binding="{Binding Fecha}" Width="150"/>
-                <DataGridTextColumn Header="Turno" Binding="{Binding Turno}" Width="100"/>
-                <DataGridTextColumn Header="Cliente" Binding="{Binding Cliente}" Width="*"/>
+                <DataGridTextColumn Header="Mahia" Binding="{Binding Mesa}" Width="100"/>
+                <DataGridTextColumn Header="Data" Binding="{Binding Fecha}" Width="150"/>
+                <DataGridTextColumn Header="Txanda" Binding="{Binding Turno}" Width="100"/>
+                <DataGridTextColumn Header="Erabiltzailea" Binding="{Binding Cliente}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
 
         <!-- Botones -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="➕ Nueva" Width="90" Margin="5" Click="Add_Click"/>
-            <Button Content="✏️ Editar" Width="90" Margin="5" Click="Edit_Click"/>
-            <Button Content="🗑️ Eliminar" Width="90" Margin="5" Click="Delete_Click"/>
+            <Button Content="➕ Gehitu" Width="90" Margin="5" Click="Add_Click"/>
+            <Button Content="✏️ Editatu" Width="90" Margin="5" Click="Edit_Click"/>
+            <Button Content="🗑️ Ezabatu" Width="90" Margin="5" Click="Delete_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>

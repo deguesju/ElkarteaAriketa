@@ -20,7 +20,7 @@
                            FontWeight="Bold"
                            Margin="20 30 0 30"/>
 
-                <Button Content="Gestion de Stock"
+                <Button Content="Stock kudeaketa"
                         Name="btnStock"
                         Margin="10"
                         Height="40"
@@ -29,7 +29,7 @@
                         BorderBrush="Transparent"
                         Click="btnStock_Click"/>
 
-                <Button Content="Gestion de Usuarios"
+                <Button Content="Erabiltzaile kudeaketa"
                         Name="btnUsers"
                         Margin="10"
                         Height="40"
@@ -38,7 +38,7 @@
                         BorderBrush="Transparent"
                         Click="btnUsers_Click"/>
 
-                <Button Content="Reservas"
+                <Button Content="Erreserbak"
                         Name="btnReservations"
                         Margin="10"
                         Height="40"
@@ -47,7 +47,7 @@
                         BorderBrush="Transparent"
                         Click="btnReservations_Click"/>
 
-                <Button Content="Pedidos"
+                <Button Content="Eskaerak"
                         Name="btnOrders"
                         Margin="10"
                         Height="40"
@@ -56,7 +56,7 @@
                         BorderBrush="Transparent"
                         Click="btnOrders_Click"/>
 
-                <Button Content="Cerrar sesion"
+                <Button Content="Saioa amaitu"
                         Name="btnLogout"
                         Margin="10"
                         Height="40"
@@ -68,7 +68,7 @@
         </Border>
 
         <Grid Grid.Column="1" Name="MainContent" Background="WhiteSmoke">
-            <TextBlock Text="Bienvenido al panel de administrador"
+            <TextBlock Text="Ongi etorri administratzaile panelera"
                        FontSize="24"
                        FontWeight="SemiBold"
                        Foreground="#333"

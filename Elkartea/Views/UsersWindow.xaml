@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <!-- Título -->
-        <TextBlock Text="Gestión de Usuarios"
+        <TextBlock Text="Erabiltzaile kudeaketa"
                    FontSize="22"
                    FontWeight="Bold"
                    Margin="0 0 0 10"/>
@@ -29,16 +29,16 @@
                   Margin="0 10 0 10">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60"/>
-                <DataGridTextColumn Header="Usuario" Binding="{Binding Username}" Width="*"/>
-                <DataGridTextColumn Header="Rol" Binding="{Binding Role}" Width="120"/>
+                <DataGridTextColumn Header="Bazkidea" Binding="{Binding Username}" Width="*"/>
+                <DataGridTextColumn Header="Rola" Binding="{Binding Role}" Width="120"/>
             </DataGrid.Columns>
         </DataGrid>
 
         <!-- Botones -->
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="➕ Añadir" Width="90" Margin="5" Click="Add_Click"/>
-            <Button Content="✏️ Editar" Width="90" Margin="5" Click="Edit_Click"/>
-            <Button Content="🗑️ Eliminar" Width="90" Margin="5" Click="Delete_Click"/>
+            <Button Content="➕ Gehitu" Width="90" Margin="5" Click="Add_Click"/>
+            <Button Content="✏️ Editatu" Width="90" Margin="5" Click="Edit_Click"/>
+            <Button Content="🗑️ Ezabatu" Width="90" Margin="5" Click="Delete_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>
