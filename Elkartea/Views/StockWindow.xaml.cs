@@ -1,57 +1,86 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using Microsoft.VisualBasic;
+using Elkartea.Data;
+using Elkartea.Models;
 
 namespace TPV_Gastronomico.Views
 {
     public partial class StockWindow : UserControl
     {
-        public class Producto
-        {
-            public int Id { get; set; }
-            public string Nombre { get; set; }
-            public int Cantidad { get; set; }
-            public double Precio { get; set; }
-        }
-
-        private List<Producto> productos = new List<Producto>();
-
         public StockWindow()
         {
             InitializeComponent();
-            CargarDatosDummy();
+            LoadProducts();
         }
 
-        private void CargarDatosDummy()
+        private void LoadProducts()
         {
-            productos = new List<Producto>
-            {
-                new Producto { Id = 1, Nombre = "Txuleta", Cantidad = 10, Precio = 25.50 },
-                new Producto { Id = 2, Nombre = "Vino Tinto", Cantidad = 30, Precio = 8.00 },
-                new Producto { Id = 3, Nombre = "Sidra", Cantidad = 20, Precio = 5.50 },
-            };
-            dgStock.ItemsSource = productos;
+            using var db = new AppDbContext();
+            dgStock.ItemsSource = db.Products?.ToList();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Aquí se abriría una ventana para añadir un producto nuevo.");
+            var nombre = Interaction.InputBox("Nombre del producto:", "Añadir producto");
+            if (string.IsNullOrWhiteSpace(nombre)) return;
+
+            if (!int.TryParse(Interaction.InputBox("Cantidad:", "Añadir producto", "0"), out var cantidad))
+                cantidad = 0;
+            if (!double.TryParse(Interaction.InputBox("Precio:", "Añadir producto", "0"), out var precio))
+                precio = 0;
+
+            using var db = new AppDbContext();
+            var p = new Product { Nombre = nombre, Cantidad = cantidad, Precio = precio };
+            db.Products!.Add(p);
+            db.SaveChanges();
+            LoadProducts();
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (dgStock.SelectedItem is Producto p)
-                MessageBox.Show($"Editar producto: {p.Nombre}");
+            if (dgStock.SelectedItem is Product p)
+            {
+                if (!int.TryParse(Interaction.InputBox("Nueva cantidad:", "Editar producto", p.Cantidad.ToString()), out var nuevaCantidad))
+                    return;
+
+                using var db = new AppDbContext();
+                var prod = db.Products!.FirstOrDefault(x => x.Id == p.Id);
+                if (prod != null)
+                {
+                    prod.Cantidad = nuevaCantidad;
+                    db.SaveChanges();
+                }
+                LoadProducts();
+            }
             else
+            {
                 MessageBox.Show("Selecciona un producto para editar.");
+            }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            if (dgStock.SelectedItem is Producto p)
-                MessageBox.Show($"Eliminar producto: {p.Nombre}");
+            if (dgStock.SelectedItem is Product p)
+            {
+                var res = MessageBox.Show($"Eliminar producto {p.Nombre}?", "Confirmar", MessageBoxButton.YesNo);
+                if (res != MessageBoxResult.Yes) return;
+
+                using var db = new AppDbContext();
+                var prod = db.Products!.FirstOrDefault(x => x.Id == p.Id);
+                if (prod != null)
+                {
+                    db.Products.Remove(prod);
+                    db.SaveChanges();
+                }
+                LoadProducts();
+            }
             else
+            {
                 MessageBox.Show("Selecciona un producto para eliminar.");
+            }
         }
     }
 }

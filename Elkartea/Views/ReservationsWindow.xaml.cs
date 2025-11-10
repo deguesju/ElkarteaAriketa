@@ -1,60 +1,80 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using Microsoft.VisualBasic;
+using Elkartea.Data;
+using Elkartea.Models;
 
 namespace TPV_Gastronomico.Views
 {
     public partial class ReservationsWindow : UserControl
     {
-        public class Reserva
-        {
-            public int Id { get; set; }
-            public string Mesa { get; set; }
-            public DateTime Fecha { get; set; }
-            public string Turno { get; set; } // "Comida" o "Cena"
-            public string Cliente { get; set; }
-        }
-
-        private List<Reserva> reservas = new List<Reserva>();
-
         public ReservationsWindow()
         {
             InitializeComponent();
-            CargarReservasDummy();
+            LoadReservations();
         }
 
-        private void CargarReservasDummy()
+        private void LoadReservations()
         {
-            reservas = new List<Reserva>
-            {
-                new Reserva { Id = 1, Mesa = "1", Fecha = DateTime.Today, Turno = "Comida", Cliente = "Iñaki" },
-                new Reserva { Id = 2, Mesa = "3", Fecha = DateTime.Today, Turno = "Cena", Cliente = "Ane" },
-                new Reserva { Id = 3, Mesa = "5", Fecha = DateTime.Today.AddDays(1), Turno = "Cena", Cliente = "Mikel" },
-            };
-
-            dgReservations.ItemsSource = reservas;
+            using var db = new AppDbContext();
+            dgReservations.ItemsSource = db.Reservations?.ToList();
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Aquí se abriría un formulario para crear una nueva reserva.");
+            var mesa = Interaction.InputBox("Mesa:", "Añadir reserva", "A1");
+            if (string.IsNullOrWhiteSpace(mesa)) return;
+            if (!DateTime.TryParse(Interaction.InputBox("Fecha (yyyy-MM-dd HH:mm):", "Añadir reserva", DateTime.Now.ToString("s")), out var fecha))
+                fecha = DateTime.Now;
+            var turno = Interaction.InputBox("Turno:", "Añadir reserva", "Comida");
+            var cliente = Interaction.InputBox("Cliente:", "Añadir reserva", "");
+
+            using var db = new AppDbContext();
+            db.Reservations!.Add(new Reservation { Mesa = mesa, Fecha = fecha, Turno = turno, Cliente = cliente });
+            db.SaveChanges();
+            LoadReservations();
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (dgReservations.SelectedItem is Reserva r)
-                MessageBox.Show($"Editar reserva de {r.Cliente} en mesa {r.Mesa} ({r.Turno})");
+            if (dgReservations.SelectedItem is Reservation r)
+            {
+                var cliente = Interaction.InputBox("Cliente:", "Editar reserva", r.Cliente);
+                using var db = new AppDbContext();
+                var res = db.Reservations!.FirstOrDefault(x => x.Id == r.Id);
+                if (res != null)
+                {
+                    res.Cliente = cliente;
+                    db.SaveChanges();
+                }
+                LoadReservations();
+            }
             else
+            {
                 MessageBox.Show("Selecciona una reserva para editar.");
+            }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            if (dgReservations.SelectedItem is Reserva r)
-                MessageBox.Show($"Eliminar reserva de {r.Cliente}");
+            if (dgReservations.SelectedItem is Reservation r)
+            {
+                if (MessageBox.Show($"Eliminar reserva mesa {r.Mesa}?", "Confirmar", MessageBoxButton.YesNo) != MessageBoxResult.Yes) return;
+                using var db = new AppDbContext();
+                var res = db.Reservations!.FirstOrDefault(x => x.Id == r.Id);
+                if (res != null)
+                {
+                    db.Reservations.Remove(res);
+                    db.SaveChanges();
+                }
+                LoadReservations();
+            }
             else
+            {
                 MessageBox.Show("Selecciona una reserva para eliminar.");
+            }
         }
     }
 }
