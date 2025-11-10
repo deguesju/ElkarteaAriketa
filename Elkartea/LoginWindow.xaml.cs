@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using Elkartea.Data;
 
 namespace TPV_Gastronomico.Views
 {
@@ -18,14 +20,16 @@ namespace TPV_Gastronomico.Views
             string usuario = txtUsuario.Text;
             string password = txtPassword.Password;
 
-            // Por ahora, sin base de datos — lo simulamos
-            if (usuario == "admin" && password == "1234")
+            // Validar contra la base de datos
+            using var db = new AppDbContext();
+            var user = db.Users?.FirstOrDefault(u => u.Username == usuario && u.Password == password);
+
+            if (user != null)
             {
-                LoginCorrecto?.Invoke(this, "admin");
-            }
-            else if (usuario == "user" && password == "1234")
-            {
-                LoginCorrecto?.Invoke(this, "user");
+                // Normaliza rol para la vista principal
+                var role = (user.Role ?? string.Empty).ToLower();
+                if (role.Contains("admin")) LoginCorrecto?.Invoke(this, "admin");
+                else LoginCorrecto?.Invoke(this, "user");
             }
             else
             {

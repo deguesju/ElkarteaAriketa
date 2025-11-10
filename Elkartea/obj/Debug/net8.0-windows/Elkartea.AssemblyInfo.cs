@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Elkartea")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+54aefab8bf0edf3f38217b07bf3de011b476bff0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09c4ce226425aa53b6d62e64931e0ac162fe7288")]
 [assembly: System.Reflection.AssemblyProductAttribute("Elkartea")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Elkartea")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

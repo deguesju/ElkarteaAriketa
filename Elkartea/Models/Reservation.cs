@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Elkartea.Models
 {
-    internal class Reservation
+    public class Reservation
     {
+        public int Id { get; set; }
+        public string Mesa { get; set; } = string.Empty;
+        public DateTime Fecha { get; set; }
+        public string Turno { get; set; } = string.Empty; // "Comida" o "Cena"
+        public string Cliente { get; set; } = string.Empty;
     }
 }
