@@ -10,6 +10,15 @@ namespace TPV_Gastronomico.Views
             InitializeComponent();
         }
 
+        public AdminPanel(string nombreUsuario) : this()
+        {
+            var tb = FindName("txtWelcome") as TextBlock;
+            if (tb != null && !string.IsNullOrWhiteSpace(nombreUsuario))
+            {
+                tb.Text = $"Ongi etorri, {nombreUsuario}!";
+            }
+        }
+
         private void btnStock_Click(object sender, RoutedEventArgs e)
         {
             MainContent.Children.Clear();

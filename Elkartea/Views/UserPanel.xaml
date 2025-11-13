@@ -4,13 +4,68 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             Width="600" Height="400">
-    <Grid Background="WhiteSmoke">
-        <TextBlock Text="Bienvenido al panel de usuario"
-                   FontSize="24"
-                   FontWeight="SemiBold"
-                   Foreground="#333"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
+             Width="900" Height="600">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Background="#2D2D30" Grid.Column="0">
+            <StackPanel>
+                <TextBlock x:Name="txtWelcome" Text="Ongi etorri"
+                           Foreground="White"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Margin="20 30 0 30"/>
+
+                <Button Content="Erreserbak"
+                        Name="btnReservations"
+                        Margin="10"
+                        Height="40"
+                        Background="#3E3E42"
+                        Foreground="White"
+                        BorderBrush="Transparent"
+                        Click="btnReservations_Click"/>
+
+                <Button Content="Eskaerak"
+                        Name="btnOrders"
+                        Margin="10"
+                        Height="40"
+                        Background="#3E3E42"
+                        Foreground="White"
+                        BorderBrush="Transparent"
+                        Click="btnOrders_Click"/>
+                
+
+                <Button Content="Ordaindu"
+                        Name="btnPay"
+                        Margin="10"
+                        Height="40"
+                        Background="#3E3E42"
+                        Foreground="White"
+                        BorderBrush="Transparent"
+                        Click="btnPay_Click"/>
+
+                <Button Content="Saioa amaitu"
+                        Name="btnLogout"
+                        Margin="10"
+                        Height="40"
+                        Background="#A83232"
+                        Foreground="White"
+                        BorderBrush="Transparent"
+                        Click="btnLogout_Click"/>
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Column="1" Name="MainContent" Background="WhiteSmoke">
+            <TextBlock Text="Ongi etorri erabiltzaile panelera"
+                       FontSize="24"
+                       FontWeight="SemiBold"
+                       Foreground="#333"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+        </Grid>
     </Grid>
 </UserControl>

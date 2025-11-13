@@ -6,9 +6,21 @@ using Elkartea.Data;
 
 namespace TPV_Gastronomico.Views
 {
+    public class LoginEventArgs : EventArgs
+    {
+        public string Role { get; }
+        public string Username { get; }
+
+        public LoginEventArgs(string role, string username)
+        {
+            Role = role;
+            Username = username;
+        }
+    }
+
     public partial class LoginWindow : UserControl
     {
-        public event EventHandler<string> LoginCorrecto; // "admin" o "user"
+        public event EventHandler<LoginEventArgs> LoginCorrecto; // now provides role and username
 
         public LoginWindow()
         {
@@ -28,8 +40,8 @@ namespace TPV_Gastronomico.Views
             {
                 // Normaliza rol para la vista principal
                 var role = (user.Role ?? string.Empty).ToLower();
-                if (role.Contains("admin")) LoginCorrecto?.Invoke(this, "admin");
-                else LoginCorrecto?.Invoke(this, "user");
+                if (role.Contains("admin")) LoginCorrecto?.Invoke(this, new LoginEventArgs("admin", user.Username));
+                else LoginCorrecto?.Invoke(this, new LoginEventArgs("user", user.Username));
             }
             else
             {

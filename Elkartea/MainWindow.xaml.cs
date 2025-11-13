@@ -18,15 +18,15 @@ namespace Elkartea
             MainContent.Content = loginView;
         }
 
-        private void Login_Exitoso(object sender, string tipoUsuario)
+        private void Login_Exitoso(object sender, LoginEventArgs e)
         {
-            if (tipoUsuario == "admin")
+            if (e.Role == "admin")
             {
-                MainContent.Content = new AdminPanel();
+                MainContent.Content = new AdminPanel(e.Username);
             }
             else
             {
-                MainContent.Content = new UserPanel();
+                MainContent.Content = new UserPanel(e.Username);
             }
         }
     }

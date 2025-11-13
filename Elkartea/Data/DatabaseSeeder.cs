@@ -25,7 +25,9 @@ namespace Elkartea.Data
             {
                 new User { Username = "admin", Password = "admin123", Role = "admin" },
                 new User { Username = "user", Password = "user123", Role = "user" },
-                new User { Username = "jaime", Password = "1234", Role = "Administrador" }
+                new User { Username = "jaime", Password = "1234", Role = "Administrador" },
+                new User { Username = "danel", Password = "danel", Role = "Administrador" }
+
             };
 
             foreach (var u in requiredUsers)
