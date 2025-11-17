@@ -161,3 +161,5 @@ C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\bin\De
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Elkartea.csproj.Up2Date
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Views\UserPayWindow.baml
 C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Views\UserPayWindow.g.cs
+C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Views\QuantityWindow.baml
+C:\Users\ik012982i18\Desktop\Danel\DAM\1 ebaluazioa\ZPP\Elkartea\Elkartea\obj\Debug\net8.0-windows\Views\QuantityWindow.g.cs

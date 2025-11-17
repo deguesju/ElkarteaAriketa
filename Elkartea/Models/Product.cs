@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Elkartea.Models
 {
-    public class Product
+    public class ProductItem
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; } = string.Empty;
-        public int Cantidad { get; set; }
-        public double Precio { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public decimal Price { get; set; }
+        public string ImagePath { get; set; } = string.Empty;
     }
 }
