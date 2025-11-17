@@ -28,25 +28,29 @@ namespace TPV_Gastronomico.Views
 
         private void btnReservations_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Erreserbak clicked", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+            MainContent.Children.Clear();
+            MainContent.Children.Add(new ReservationsWindow());
         }
 
         private void btnOrders_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Eskaerak clicked", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+            MainContent.Children.Clear();
+            MainContent.Children.Add(new OrdersWindow());
         }
 
         private void btnPay_Click(object sender, RoutedEventArgs e)
         {
-            // Load the TPV / payment view into the right-hand content area
             MainContent.Children.Clear();
             MainContent.Children.Add(new TPV_Gastronomico.Views.UserPayWindow());
         }
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Saioa amaitu", "Logout", MessageBoxButton.OK, MessageBoxImage.Information);
+            var mw = Window.GetWindow(this) as Elkartea.MainWindow;
+            if (mw != null)
+            {
+                mw.MostrarLogin();
+            }
         }
 
-
-    }
+     }
 }

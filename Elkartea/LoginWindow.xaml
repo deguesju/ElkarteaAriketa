@@ -39,11 +39,7 @@
                         FontWeight="Bold"
                         Click="Login_Click"/>
 
-                <TextBlock Text="Erabiltzailea: admin / user — Pasahitza: 1234"
-                           FontSize="11"
-                           Foreground="Gray"
-                           HorizontalAlignment="Center"
-                           Margin="0 15 0 0"/>
+                
             </StackPanel>
         </Border>
     </Grid>

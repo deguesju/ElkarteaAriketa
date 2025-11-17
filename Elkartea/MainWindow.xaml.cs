@@ -8,7 +8,7 @@ namespace Elkartea
         public MainWindow()
         {
             InitializeComponent();
-            MostrarLogin(); // Cargar la vista de login al inicio
+            MostrarLogin();
         }
 
         public void MostrarLogin()
