@@ -72,9 +72,9 @@
 
 				<!-- Add / Remove buttons -->
 				<StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">
-					<Button Content="Gehitu" Width="80" Height="34" Background="#3E3E42" Foreground="White"/>
-					<Button Content="Kendu" Width="80" Height="34" Margin="8,0,0,0"
-                            Background="#3E3E42" Foreground="White"/>
+					<Button x:Name="btnAdd" Content="Gehitu" Width="80" Height="34" Background="#3E3E42" Foreground="White"/>
+					<Button x:Name="btnRemove" Content="Kendu" Width="80" Height="34" Margin="8,0,0,0"
+                            Background="#3E3E42" Foreground="White" Click="Remove_Click"/>
 				</StackPanel>
 
 				<!-- TOTAL + PAY -->
@@ -87,8 +87,8 @@
 					<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
 						<Button Content="Utzi" Width="90" Height="34" Margin="0,0,6,0"
                                 Background="#777" Foreground="White"/>
-						<Button Content="Ordaindu" Width="100" Height="34"
-                                Background="#1E90FF" Foreground="White"/>
+						<Button x:Name="btnPay" Content="Ordaindu" Width="100" Height="34"
+                                Background="#1E90FF" Foreground="White" Click="Pay_Click"/>
 					</StackPanel>
 				</StackPanel>
 

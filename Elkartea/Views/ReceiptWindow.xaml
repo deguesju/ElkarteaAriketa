@@ -1,0 +1,10 @@
+<Window x:Class="TPV_Gastronomico.Views.ReceiptWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Tiketa" Height="450" Width="320" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <Grid Background="WhiteSmoke" Margin="10">
+        <TextBox x:Name="txtReceipt" IsReadOnly="True" VerticalScrollBarVisibility="Auto" Background="White" FontFamily="Consolas" FontSize="12"/>
+        <Button Content="Inprimatu" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Width="80" Click="Print_Click"/>
+        <Button Content="Itxi" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10" Width="80" Click="Close_Click"/>
+    </Grid>
+</Window>

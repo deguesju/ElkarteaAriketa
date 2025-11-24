@@ -23,11 +23,11 @@ namespace TPV_Gastronomico.Views
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            var username = Interaction.InputBox("Username:", "Añadir usuario");
+            var username = Interaction.InputBox("Erabiltzaile izena:", "Erabiltzailea gehitu");
             if (string.IsNullOrWhiteSpace(username)) return;
 
-            var password = Interaction.InputBox("Password:", "Añadir usuario", "1234");
-            var role = Interaction.InputBox("Role:", "Añadir usuario", "user");
+            var password = Interaction.InputBox("Pasahitza:", "Erabiltzailea gehitu", "1234");
+            var role = Interaction.InputBox("Rol:", "Erabiltzailea gehitu", "user");
 
             using var db = new AppDbContext();
             db.Users!.Add(new User { Username = username, Password = password, Role = role });
@@ -39,8 +39,8 @@ namespace TPV_Gastronomico.Views
         {
             if (dgUsers.SelectedItem is User u)
             {
-                var password = Interaction.InputBox("Nueva password:", "Editar usuario", u.Password);
-                var role = Interaction.InputBox("Nuevo role:", "Editar usuario", u.Role);
+                var password = Interaction.InputBox("Pasahitz berria:", "Erabiltzailea editatu", u.Password);
+                var role = Interaction.InputBox("Rol berria:", "Erabiltzailea editatu", u.Role);
 
                 using var db = new AppDbContext();
                 var user = db.Users!.FirstOrDefault(x => x.Id == u.Id);
@@ -54,7 +54,7 @@ namespace TPV_Gastronomico.Views
             }
             else
             {
-                MessageBox.Show("Selecciona un usuario para editar.");
+                MessageBox.Show("Aukeratu editatu nahi duzun erabiltzailea.");
             }
         }
 
@@ -62,7 +62,7 @@ namespace TPV_Gastronomico.Views
         {
             if (dgUsers.SelectedItem is User u)
             {
-                if (MessageBox.Show($"Eliminar usuario {u.Username}?", "Confirmar", MessageBoxButton.YesNo) != MessageBoxResult.Yes) return;
+                if (MessageBox.Show($"{u.Username} ezabatu?", "Berretsi", MessageBoxButton.YesNo) != MessageBoxResult.Yes) return;
                 using var db = new AppDbContext();
                 var user = db.Users!.FirstOrDefault(x => x.Id == u.Id);
                 if (user != null)
@@ -74,7 +74,7 @@ namespace TPV_Gastronomico.Views
             }
             else
             {
-                MessageBox.Show("Selecciona un usuario para eliminar.");
+                MessageBox.Show("Aukeratu ezabatu nahi duzun erabiltzailea.");
             }
         }
     }

@@ -24,12 +24,12 @@ namespace TPV_Gastronomico.Views
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            var nombre = Interaction.InputBox("Nombre del producto:", "Añadir producto");
+            var nombre = Interaction.InputBox("Produktuen izena:", "Produktua gehitu");
             if (string.IsNullOrWhiteSpace(nombre)) return;
 
-            if (!int.TryParse(Interaction.InputBox("Cantidad:", "Añadir producto", "0"), out var cantidad))
+            if (!int.TryParse(Interaction.InputBox("Kopurua:", "Produktua gehitu", "0"), out var cantidad))
                 cantidad = 0;
-            if (!double.TryParse(Interaction.InputBox("Precio:", "Añadir producto", "0"), out var precio))
+            if (!double.TryParse(Interaction.InputBox("Prezioa:", "Produktua gehitu", "0"), out var precio))
                 precio = 0;
 
             using var db = new AppDbContext();
@@ -43,7 +43,7 @@ namespace TPV_Gastronomico.Views
         {
             if (dgStock.SelectedItem is Product p)
             {
-                if (!int.TryParse(Interaction.InputBox("Nueva cantidad:", "Editar producto", p.Cantidad.ToString()), out var nuevaCantidad))
+                if (!int.TryParse(Interaction.InputBox("Kopuru berria:", "Produktua editatu", p.Cantidad.ToString()), out var nuevaCantidad))
                     return;
 
                 using var db = new AppDbContext();
@@ -57,7 +57,7 @@ namespace TPV_Gastronomico.Views
             }
             else
             {
-                MessageBox.Show("Selecciona un producto para editar.");
+                MessageBox.Show("Aukeratu editatu nahi duzun produktua.");
             }
         }
 
@@ -65,7 +65,7 @@ namespace TPV_Gastronomico.Views
         {
             if (dgStock.SelectedItem is Product p)
             {
-                var res = MessageBox.Show($"Eliminar producto {p.Nombre}?", "Confirmar", MessageBoxButton.YesNo);
+                var res = MessageBox.Show($"{p.Nombre} ezabatu?", "Berretsi", MessageBoxButton.YesNo);
                 if (res != MessageBoxResult.Yes) return;
 
                 using var db = new AppDbContext();
@@ -79,7 +79,7 @@ namespace TPV_Gastronomico.Views
             }
             else
             {
-                MessageBox.Show("Selecciona un producto para eliminar.");
+                MessageBox.Show("Aukeratu ezabatu nahi duzun produktua.");
             }
         }
     }

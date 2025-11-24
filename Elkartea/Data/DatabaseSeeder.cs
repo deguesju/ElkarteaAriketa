@@ -15,7 +15,12 @@ namespace Elkartea.Data
             {
                 db.Products.AddRange(
                     new Product { Nombre = "Txuleta", Cantidad = 10, Precio = 25.50 },
-                    new Product { Nombre = "Vino Tinto", Cantidad = 30, Precio = 8.00 }
+                    new Product { Nombre = "Ardo Gorria", Cantidad = 30, Precio = 8.00 },
+                    new Product { Nombre = "Olioa", Cantidad = 50, Precio = 4.50 },
+                    new Product { Nombre = "Koka-Kola", Cantidad = 100, Precio = 2.00 },
+                    new Product { Nombre = "Ogia", Cantidad = 40, Precio = 1.20 },
+                    new Product { Nombre = "Gazta", Cantidad = 25, Precio = 3.50 },
+                    new Product { Nombre = "Kafea", Cantidad = 80, Precio = 1.50 }
                 );
                 db.SaveChanges();
             }

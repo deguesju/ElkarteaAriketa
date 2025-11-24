@@ -45,7 +45,7 @@ namespace TPV_Gastronomico.Views
             }
             else
             {
-                MessageBox.Show("Usuario o contraseña incorrectos.");
+                MessageBox.Show("Erabiltzaile edo pasahitz okerra.");
             }
         }
     }
