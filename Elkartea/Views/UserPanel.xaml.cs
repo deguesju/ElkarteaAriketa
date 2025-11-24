@@ -1,6 +1,6 @@
 using System.Windows;
 using System.Windows.Controls;
-using TPV_Gastronomico.Views; // allow creating UserPayWindow
+using TPV_Gastronomico.Views;
 
 namespace TPV_Gastronomico.Views
 {

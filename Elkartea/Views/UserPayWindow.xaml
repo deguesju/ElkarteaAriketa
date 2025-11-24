@@ -68,7 +68,7 @@
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*"/>
 					<ColumnDefinition Width="230"/>
-				</Grid.ColumnDefinitions>
+				</Grid.ColumnDefinitions> 
 
 				<!-- Add / Remove buttons -->
 				<StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,8,0">

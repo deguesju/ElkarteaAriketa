@@ -2,23 +2,25 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using Elkartea.Models;
 
 namespace TPV_Gastronomico.Views
 {
     public partial class UserPayWindow : UserControl
     {
-        private List<ProductItem> AllProducts;
+        private List<Product> AllProducts;
 
         public UserPayWindow()
         {
             InitializeComponent();
 
-            AllProducts = new List<ProductItem>
+            // Productos de ejemplo
+            AllProducts = new List<Product>
             {
-                new ProductItem { Name="Aceite", Price=4.50m, ImagePath="Images/aceite.png" },
-                new ProductItem { Name="Vino", Price=8.90m, ImagePath="Images/vino.png" },
-                new ProductItem { Name="Coca-Cola", Price=2.00m, ImagePath="Images/cocacola.png" },
-                new ProductItem { Name="Pan", Price=1.20m, ImagePath="Images/pan.png" }
+                new Product { Name="Aceite", Price=4.50m },
+                new Product { Name="Vino", Price=8.90m },
+                new Product { Name="Coca-Cola", Price=2.00m },
+                new Product { Name="Pan", Price=1.20m }
             };
 
             dgConsumed.ItemsSource = new List<ConsumedItem>();
@@ -46,7 +48,7 @@ namespace TPV_Gastronomico.Views
 
         private void lbResults_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (lbResults.SelectedItem is not ProductItem product)
+            if (lbResults.SelectedItem is not Product product)
                 return;
 
             QuantityWindow qtyWin = new QuantityWindow();
