@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using Microsoft.VisualBasic;
 using Elkartea.Data;
 using Elkartea.Models;
+using Elkartea.Utils;
 
 namespace TPV_Gastronomico.Views
 {
@@ -18,62 +19,90 @@ namespace TPV_Gastronomico.Views
 
         private void LoadReservations()
         {
-            using var db = new AppDbContext();
-            dgReservations.ItemsSource = db.Reservations?.ToList();
+            try
+            {
+                using var db = new AppDbContext();
+                dgReservations.ItemsSource = db.Reservations?.ToList();
+            }
+            catch (Exception ex)
+            {
+                ErrorHelper.HandleException(ex, "Erreserbak kargatzean errorea");
+            }
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            var mesa = Interaction.InputBox("Mesa:", "Añadir reserva", "A1");
-            if (string.IsNullOrWhiteSpace(mesa)) return;
-            if (!DateTime.TryParse(Interaction.InputBox("Fecha (yyyy-MM-dd HH:mm):", "Añadir reserva", DateTime.Now.ToString("s")), out var fecha))
-                fecha = DateTime.Now;
-            var turno = Interaction.InputBox("Turno:", "Añadir reserva", "Comida");
-            var cliente = Interaction.InputBox("Cliente:", "Añadir reserva", "");
+            try
+            {
+                var mesa = Interaction.InputBox("Mahaia:", "Erreserba gehitu", "A1");
+                if (string.IsNullOrWhiteSpace(mesa)) return;
+                if (!DateTime.TryParse(Interaction.InputBox("Data (yyyy-MM-dd HH:mm):", "Erreserba gehitu", DateTime.Now.ToString("s")), out var fecha))
+                    fecha = DateTime.Now;
+                var turno = Interaction.InputBox("Txanda:", "Erreserba gehitu", "Jana");
+                var cliente = Interaction.InputBox("Bezeroa:", "Erreserba gehitu", "");
 
-            using var db = new AppDbContext();
-            db.Reservations!.Add(new Reservation { Mesa = mesa, Fecha = fecha, Turno = turno, Cliente = cliente });
-            db.SaveChanges();
-            LoadReservations();
+                using var db = new AppDbContext();
+                db.Reservations!.Add(new Reservation { Mesa = mesa, Fecha = fecha, Turno = turno, Cliente = cliente });
+                db.SaveChanges();
+                LoadReservations();
+            }
+            catch (Exception ex)
+            {
+                ErrorHelper.HandleException(ex, "Erreserba gehitzean errorea");
+            }
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (dgReservations.SelectedItem is Reservation r)
+            try
             {
-                var cliente = Interaction.InputBox("Cliente:", "Editar reserva", r.Cliente);
-                using var db = new AppDbContext();
-                var res = db.Reservations!.FirstOrDefault(x => x.Id == r.Id);
-                if (res != null)
+                if (dgReservations.SelectedItem is Reservation r)
                 {
-                    res.Cliente = cliente;
-                    db.SaveChanges();
+                    var cliente = Interaction.InputBox("Bezeroa:", "Erreserba editatu", r.Cliente);
+                    using var db = new AppDbContext();
+                    var res = db.Reservations!.FirstOrDefault(x => x.Id == r.Id);
+                    if (res != null)
+                    {
+                        res.Cliente = cliente;
+                        db.SaveChanges();
+                    }
+                    LoadReservations();
                 }
-                LoadReservations();
+                else
+                {
+                    MessageBox.Show("Aukeratu editatu nahi duzun erreserba.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Selecciona una reserva para editar.");
+                ErrorHelper.HandleException(ex, "Erreserba editatzean errorea");
             }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            if (dgReservations.SelectedItem is Reservation r)
+            try
             {
-                if (MessageBox.Show($"Eliminar reserva mesa {r.Mesa}?", "Confirmar", MessageBoxButton.YesNo) != MessageBoxResult.Yes) return;
-                using var db = new AppDbContext();
-                var res = db.Reservations!.FirstOrDefault(x => x.Id == r.Id);
-                if (res != null)
+                if (dgReservations.SelectedItem is Reservation r)
                 {
-                    db.Reservations.Remove(res);
-                    db.SaveChanges();
+                    if (MessageBox.Show($"{r.Mesa} mahaiaren erreserba ezabatu?", "Berretsi", MessageBoxButton.YesNo) != MessageBoxResult.Yes) return;
+                    using var db = new AppDbContext();
+                    var res = db.Reservations!.FirstOrDefault(x => x.Id == r.Id);
+                    if (res != null)
+                    {
+                        db.Reservations.Remove(res);
+                        db.SaveChanges();
+                    }
+                    LoadReservations();
                 }
-                LoadReservations();
+                else
+                {
+                    MessageBox.Show("Aukeratu ezabatu nahi duzun erreserba.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Selecciona una reserva para eliminar.");
+                ErrorHelper.HandleException(ex, "Erreserba ezabatzean errorea");
             }
         }
     }

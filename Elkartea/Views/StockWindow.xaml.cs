@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using Microsoft.VisualBasic;
 using Elkartea.Data;
 using Elkartea.Models;
+using Elkartea.Utils;
 
 namespace TPV_Gastronomico.Views
 {
@@ -16,70 +17,101 @@ namespace TPV_Gastronomico.Views
             LoadProducts();
         }
 
+        /// <summary>
+        /// Produktuak kargatzen ditu datu-basetik. Saiakera eta errore kudeaketa eginda.
+        /// </summary>
         private void LoadProducts()
         {
-            using var db = new AppDbContext();
-            dgStock.ItemsSource = db.Products?.ToList();
+            try
+            {
+                using var db = new AppDbContext();
+                dgStock.ItemsSource = db.Products?.ToList();
+            }
+            catch (Exception ex)
+            {
+                ErrorHelper.HandleException(ex, "Produktuen kargatzean errorea");
+            }
         }
 
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            var nombre = Interaction.InputBox("Produktuen izena:", "Produktua gehitu");
-            if (string.IsNullOrWhiteSpace(nombre)) return;
+            try
+            {
+                var nombre = Interaction.InputBox("Produktuen izena:", "Produktua gehitu");
+                if (string.IsNullOrWhiteSpace(nombre)) return;
 
-            if (!int.TryParse(Interaction.InputBox("Kopurua:", "Produktua gehitu", "0"), out var cantidad))
-                cantidad = 0;
-            if (!double.TryParse(Interaction.InputBox("Prezioa:", "Produktua gehitu", "0"), out var precio))
-                precio = 0;
+                if (!int.TryParse(Interaction.InputBox("Kopurua:", "Produktua gehitu", "0"), out var cantidad))
+                    cantidad = 0;
+                if (!double.TryParse(Interaction.InputBox("Prezioa:", "Produktua gehitu", "0"), out var precio))
+                    precio = 0;
 
-            using var db = new AppDbContext();
-            var p = new Product { Nombre = nombre, Cantidad = cantidad, Precio = precio };
-            db.Products!.Add(p);
-            db.SaveChanges();
-            LoadProducts();
+                using var db = new AppDbContext();
+                var p = new Product { Nombre = nombre, Cantidad = cantidad, Precio = precio };
+                db.Products!.Add(p);
+                db.SaveChanges();
+                LoadProducts();
+            }
+            catch (Exception ex)
+            {
+                ErrorHelper.HandleException(ex, "Produktua gehitzean errorea");
+            }
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-            if (dgStock.SelectedItem is Product p)
+            try
             {
-                if (!int.TryParse(Interaction.InputBox("Kopuru berria:", "Produktua editatu", p.Cantidad.ToString()), out var nuevaCantidad))
-                    return;
-
-                using var db = new AppDbContext();
-                var prod = db.Products!.FirstOrDefault(x => x.Id == p.Id);
-                if (prod != null)
+                if (dgStock.SelectedItem is Product p)
                 {
-                    prod.Cantidad = nuevaCantidad;
-                    db.SaveChanges();
+                    if (!int.TryParse(Interaction.InputBox("Kopuru berria:", "Produktua editatu", p.Cantidad.ToString()), out var nuevaCantidad))
+                        return;
+
+                    using var db = new AppDbContext();
+                    var prod = db.Products!.FirstOrDefault(x => x.Id == p.Id);
+                    if (prod != null)
+                    {
+                        prod.Cantidad = nuevaCantidad;
+                        db.SaveChanges();
+                    }
+                    LoadProducts();
                 }
-                LoadProducts();
+                else
+                {
+                    MessageBox.Show("Aukeratu editatu nahi duzun produktua.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Aukeratu editatu nahi duzun produktua.");
+                ErrorHelper.HandleException(ex, "Produktua editatzean errorea");
             }
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            if (dgStock.SelectedItem is Product p)
+            try
             {
-                var res = MessageBox.Show($"{p.Nombre} ezabatu?", "Berretsi", MessageBoxButton.YesNo);
-                if (res != MessageBoxResult.Yes) return;
-
-                using var db = new AppDbContext();
-                var prod = db.Products!.FirstOrDefault(x => x.Id == p.Id);
-                if (prod != null)
+                if (dgStock.SelectedItem is Product p)
                 {
-                    db.Products.Remove(prod);
-                    db.SaveChanges();
+                    var res = MessageBox.Show($"{p.Nombre} ezabatu?", "Berretsi", MessageBoxButton.YesNo);
+                    if (res != MessageBoxResult.Yes) return;
+
+                    using var db = new AppDbContext();
+                    var prod = db.Products!.FirstOrDefault(x => x.Id == p.Id);
+                    if (prod != null)
+                    {
+                        db.Products.Remove(prod);
+                        db.SaveChanges();
+                    }
+                    LoadProducts();
                 }
-                LoadProducts();
+                else
+                {
+                    MessageBox.Show("Aukeratu ezabatu nahi duzun produktua.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Aukeratu ezabatu nahi duzun produktua.");
+                ErrorHelper.HandleException(ex, "Produktua ezabitzean errorea");
             }
         }
     }

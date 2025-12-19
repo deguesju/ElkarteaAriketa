@@ -12,8 +12,6 @@ namespace Elkartea.Models
         public int Cantidad { get; set; }
         public double Precio { get; set; }
 
-        // Convenience properties used by the UI code. Marked NotMapped so EF Core
-        // doesn't try to create separate columns for them.
         [NotMapped]
         public string Name
         {

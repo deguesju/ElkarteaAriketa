@@ -1,4 +1,6 @@
+using System;
 using System.Windows;
+using Elkartea.Utils;
 
 namespace TPV_Gastronomico.Views
 {
@@ -17,11 +19,18 @@ namespace TPV_Gastronomico.Views
 
         private void Print_Click(object sender, RoutedEventArgs e)
         {
-            var pd = new System.Windows.Controls.PrintDialog();
-            if (pd.ShowDialog() == true)
+            try
             {
-                // Print the TextBox content
-                pd.PrintVisual(txtReceipt, "Receipt");
+                var pd = new System.Windows.Controls.PrintDialog();
+                if (pd.ShowDialog() == true)
+                {
+                    // Print the TextBox content
+                    pd.PrintVisual(txtReceipt, "Receipt");
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorHelper.HandleException(ex, "Tiketa inprimatzean errorea");
             }
         }
     }

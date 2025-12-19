@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Elkartea.Data;
+using Elkartea.Utils;
 
 namespace TPV_Gastronomico.Views
 {
@@ -20,7 +21,7 @@ namespace TPV_Gastronomico.Views
 
     public partial class LoginWindow : UserControl
     {
-        public event EventHandler<LoginEventArgs> LoginCorrecto; // now provides role and username
+        public event EventHandler<LoginEventArgs> LoginCorrecto; // ematen du rola eta erabiltzaile izena
 
         public LoginWindow()
         {
@@ -29,23 +30,30 @@ namespace TPV_Gastronomico.Views
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            string usuario = txtUsuario.Text;
-            string password = txtPassword.Password;
-
-            // Validar contra la base de datos
-            using var db = new AppDbContext();
-            var user = db.Users?.FirstOrDefault(u => u.Username == usuario && u.Password == password);
-
-            if (user != null)
+            try
             {
-                // Normaliza rol para la vista principal
-                var role = (user.Role ?? string.Empty).ToLower();
-                if (role.Contains("admin")) LoginCorrecto?.Invoke(this, new LoginEventArgs("admin", user.Username));
-                else LoginCorrecto?.Invoke(this, new LoginEventArgs("user", user.Username));
+                string usuario = txtUsuario.Text;
+                string password = txtPassword.Password;
+
+                // Datu-basearekin egiaztatzen dugu
+                using var db = new AppDbContext();
+                var user = db.Users?.FirstOrDefault(u => u.Username == usuario && u.Password == password);
+
+                if (user != null)
+                {
+                    // Normaliza rol para la vista principal
+                    var role = (user.Role ?? string.Empty).ToLower();
+                    if (role.Contains("admin")) LoginCorrecto?.Invoke(this, new LoginEventArgs("admin", user.Username));
+                    else LoginCorrecto?.Invoke(this, new LoginEventArgs("user", user.Username));
+                }
+                else
+                {
+                    MessageBox.Show("Erabiltzaile edo pasahitz okerra.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Erabiltzaile edo pasahitz okerra.");
+                ErrorHelper.HandleException(ex, "Login prozesuan errorea");
             }
         }
     }
